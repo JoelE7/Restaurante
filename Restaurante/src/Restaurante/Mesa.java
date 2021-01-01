@@ -3,7 +3,7 @@ package Restaurante;
 public class Mesa {
 
 	private Integer numeroMesa;
-	private static Integer suma;
+	private static Integer suma = 0;
 	private Integer capacidad;
 	private Clientes[] mesaLugar;
 	private Boolean libreOcupado;
@@ -21,24 +21,26 @@ public class Mesa {
 
 	public Boolean consultarSiLaMesaEstaOcupada() {
 		for (int i = 0; i < mesaLugar.length; i++) {
-			if (mesaLugar != null) {
-				return this.libreOcupado = true;
+			if (mesaLugar[i] != null) {
+				this.libreOcupado = true;
+				return this.libreOcupado;
 			}
 		}
-		return this.libreOcupado = false;
+		this.libreOcupado = false;
+		return this.libreOcupado;
 
 	}
 
 	public Integer getNumeroMesa() {
-		return numeroMesa;
+		return this.numeroMesa;
 	}
 
 	public Boolean agregarClienteAlaMesa(Clientes clienteAagregar) {
 		for (int i = 0; i < mesaLugar.length; i++) {
-			if (mesaLugar[i].getCodigoCliente().equals(clienteAagregar.getCodigoCliente())) {
-				return false;
-			} else if (mesaLugar[i] != null) {
-				continue;
+			if (mesaLugar[i] != null) {
+				if (mesaLugar[i].getCodigoCliente().equals(clienteAagregar.getCodigoCliente())) {
+					return false;
+				}
 			} else if (mesaLugar[i] == null) {
 				mesaLugar[i] = clienteAagregar;
 				return true;
