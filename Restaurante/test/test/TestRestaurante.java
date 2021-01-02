@@ -1,5 +1,6 @@
 package test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -13,7 +14,7 @@ public class TestRestaurante {
 
 	@Test
 	public void queSePuedaCrearUnRestauranteYAgregarUnMozo() {
-		Restaurante r1 = new Restaurante("la angiosplastia",5,5,5);
+		Restaurante r1 = new Restaurante("la angiosplastia",3,5,5,5);
 		Mozo mo = new Mozo("Joel","Escobar");
 		Mozo ma = new Mozo("Joel","Escobar");
 		Mozo ms = new Mozo("Joel","Escobar");
@@ -30,7 +31,7 @@ public class TestRestaurante {
 
 	@Test 
 	public void queSePuedaAgregarUnaMesa() {
-		Restaurante r1 = new Restaurante("la angiosplastia",5,5,5);
+		Restaurante r1 = new Restaurante("la angiosplastia",3,5,5,5);
 		Mozo mo = new Mozo("Joel","Escobar");
 		r1.agregarMozo(mo);
 		Mesa m1 = new Mesa(4);
@@ -40,7 +41,7 @@ public class TestRestaurante {
 	
 	@Test
 	public void queSePuedaConsultarUnaMesa() {
-		Restaurante r1 = new Restaurante("la angiosplastia",5,5,5);
+		Restaurante r1 = new Restaurante("la angiosplastia",3,5,5,5);
 		Mozo mo = new Mozo("Joel","Escobar");
 		r1.agregarMozo(mo);
 		Mesa m1 = new Mesa(4);
@@ -56,7 +57,7 @@ public class TestRestaurante {
 	
 	@Test
 	public void queSePuedaAgregarUnClienteAunaMesa() {
-		Restaurante r1 = new Restaurante("la angiosplastia",5,5,5);
+		Restaurante r1 = new Restaurante("la angiosplastia",3,5,5,5);
 		Mozo mo = new Mozo("Joel","Escobar");
 		r1.agregarMozo(mo);
 		Mesa m1 = new Mesa(4);
@@ -82,7 +83,7 @@ public class TestRestaurante {
 	
 	@Test
 	public void consultarListaDeMozos() {
-		Restaurante r1 = new Restaurante("la angiosplastia",5,5,5);
+		Restaurante r1 = new Restaurante("la angiosplastia",3,5,5,5);
 		Mozo ma = new Mozo("Joel","Escobar");
 		Mozo me = new Mozo("Karen","Conci");
 		Mozo mi = new Mozo("Milagros","Cristaldo");
@@ -98,7 +99,7 @@ public class TestRestaurante {
 	
 	@Test
 	public void consultarMesasDisponibles() {
-		Restaurante r1 = new Restaurante("la angiosplastia",5,5,5);
+		Restaurante r1 = new Restaurante("la angiosplastia",3,5,5,5);
 		Mozo mo = new Mozo("Joel","Escobar");
 		r1.agregarMozo(mo);
 		Mesa m1 = new Mesa(4);
@@ -115,4 +116,44 @@ public class TestRestaurante {
 		
 	}
 	
+	@Test 
+	public void queSeAbraUnaCaja() {
+		Restaurante r1 = new Restaurante("la angiosplastia",3,5,5,5);
+		Mozo mo = new Mozo("Joel","Escobar");
+		r1.agregarMozo(mo);
+		Mesa m1 = new Mesa(4);
+		Mesa m2 = new Mesa(4);
+		Mesa m3 = new Mesa(4);
+		r1.agregarMesa(m1);
+		r1.agregarMesa(m2);
+		r1.agregarMesa(m3);
+		Caja c1 = new Caja();
+		assertTrue(r1.agregarCaja(c1));
+		System.out.println(r1.abrirCaja(0));
+		System.out.println(r1.cerrarCaja(0));
+	}
+	
+	@Test
+	public void queSeVacieUnaMesa() {
+		Restaurante r1 = new Restaurante("la angiosplastia",3,5,5,5);
+		Mozo mo = new Mozo("Joel","Escobar");
+		r1.agregarMozo(mo);
+		Mesa m1 = new Mesa(4);
+		Mesa m2 = new Mesa(4);
+		Mesa m3 = new Mesa(4);
+		r1.agregarMesa(m1);
+		r1.agregarMesa(m2);
+		r1.agregarMesa(m3);
+		Clientes c1 = new Clientes("s","1");
+		Clientes c2 = new Clientes("s","2");
+		assertTrue(r1.agregarClienteAUnaMesa(0, c1));
+		assertTrue(r1.agregarClienteAUnaMesa(0, c2));
+		assertEquals((Integer)2,m1.getCantidadDePersonasActualesEnLaMesa());
+		r1.vaciarMesa(0);
+		assertEquals((Integer)0,m1.getCantidadDePersonasActualesEnLaMesa());
+		
+		
+	}
+	
 }
+

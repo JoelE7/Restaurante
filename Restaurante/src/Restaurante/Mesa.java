@@ -48,5 +48,20 @@ public class Mesa {
 		}
 		return false;
 	}
+	
+	public Boolean vaciarMesa() {
+		for (int i = 0; i < mesaLugar.length; i++) {
+			mesaLugar[i]=null;
+		}return true;
+	}
+	
+	public Integer getCantidadDePersonasActualesEnLaMesa() {
+		Integer cantidad = 0;
+		for (int i = 0; i < mesaLugar.length; i++) {
+			if(mesaLugar[i]!=null) {
+				cantidad++;
+			}
+		}return cantidad;
+	}
 
 }
