@@ -2,7 +2,6 @@ package Restaurante;
 
 public class Restaurante {
 
-	private Boolean mesaDisponible;
 	private Mesa[][] mesas;
 	private String nombreRestaurante;
 	private Integer cantidadDeMozos;
@@ -163,19 +162,19 @@ public class Restaurante {
 		}
 
 	}
-	
-//	public Boolean agregarPedidoAUnaMesa(Comida comida,Integer numeroDeMesa) {
-//			for (int i = 0; i < mesas.length; i++) {
-//				for (int j = 0; j < cajas.length; j++) {
-//					if(mesas[i][j].getNumeroMesa()==numeroDeMesa) {
-//						
-//					}
-//				}
-//			}
-//	}
-		
-		
-		
-	
-	
+
+	public Boolean agregarPedidoAUnaMesa(Comida comida, Integer numeroDeMesa, Clientes cliente) {
+		for (int i = 0; i < mesas.length; i++) {
+			for (int j = 0; j < mesas.length; j++) {
+				if (mesas[i][j].buscarCliente(numeroDeMesa, cliente) != null) {
+					mesas[i][j].buscarCliente(numeroDeMesa, cliente).setHambre(false);					;
+					return true;
+				} else {
+					continue;
+				}
+			}
+		}
+		return false;
+	}
+
 }

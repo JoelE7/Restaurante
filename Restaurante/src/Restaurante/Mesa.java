@@ -64,4 +64,18 @@ public class Mesa {
 		}return cantidad;
 	}
 
+	public Clientes[] getMesaLugar() {
+		return mesaLugar;
+	}
+
+	public Clientes buscarCliente(Integer numeroMesa,Clientes cliente) {
+		for (int i = 0; i < mesaLugar.length; i++) {
+			if(this.numeroMesa==numeroMesa&&mesaLugar[i].equals(cliente)) {
+				return mesaLugar[i];
+			}else {
+				continue;
+			}
+		}return null;
+	}
+	
 }

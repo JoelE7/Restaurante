@@ -155,5 +155,30 @@ public class TestRestaurante {
 		
 	}
 	
+	 @Test
+	 public void queSePuedaHacerUnPedidoAUnaMesa() {
+		 
+			Restaurante r1 = new Restaurante("la angiosplastia",3,5,5,5);
+			Mozo mo = new Mozo("Joel","Escobar");
+			r1.agregarMozo(mo);
+			Mesa m1 = new Mesa(4);
+			Mesa m2 = new Mesa(4);
+			Mesa m3 = new Mesa(4);
+			r1.agregarMesa(m1);
+			r1.agregarMesa(m2);
+			r1.agregarMesa(m3);
+			Clientes c1 = new Clientes("s","1");
+			Clientes c2 = new Clientes("s","2");
+			assertTrue(r1.agregarClienteAUnaMesa(0, c1));
+			assertTrue(r1.agregarClienteAUnaMesa(0, c2));
+			Comida comi1 = new Comida("Milanesa",TipoDeComida.carne,212.0);
+			assertTrue(r1.agregarPedidoAUnaMesa(comi1, 0, c1));
+			assertFalse(c1.getHambre());
+			assertTrue(c2.getHambre());
+		 
+		 
+		 
+	 }
+	
 }
 
