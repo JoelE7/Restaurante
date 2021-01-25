@@ -5,6 +5,7 @@ public class Clientes {
 	private String nombre;
 	private String codigoCliente;
 	private Boolean hambre;
+	private Integer cursoGitIntento2;
 
 
 	public Clientes(String nombre, String codigoCliente) {
