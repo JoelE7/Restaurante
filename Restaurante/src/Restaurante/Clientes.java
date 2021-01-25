@@ -5,7 +5,7 @@ public class Clientes {
 	private String nombre;
 	private String codigoCliente;
 	private Boolean hambre;
-	private Integer cursoGit;
+
 
 	public Clientes(String nombre, String codigoCliente) {
 		this.codigoCliente = codigoCliente;
